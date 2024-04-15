@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+  </head>
+  <body>
+  
+    <label for="myText">Texto</label>
+    <input type="text" id="myText">
+    <br>
+    <label for="num">Cantidad</label>
+    <input type="number" id="num">
+    <br>
+    <button type="button" onclick="make_text()" id="btn_write">Escribir</button>
+
+
+    <script>
+      document.getElementById('btn_write').addEventListener('click',make_text)
+
+      function make_text() {
+        var text = document.getElementById('myText').value;
+        var num = document.getElementById('num').value;
+
+        google.script.run.withSuccessHandler(onSuccess).makeText(text, num);
+        //onSuccess()
+        //google.script.host.close();
+      }
+
+      function onSuccess(){
+        google.script.host.close();
+      }
+    </script>
+  </body>
+</html>
